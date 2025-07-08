@@ -3,226 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASO KHELI - Official Tournament App</title>
-
-  <!-- AOS Animation CSS -->
+  <title>ASO KHELI - Official Site</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
   <style>
-    /* Reset & font */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
       color: #111827;
-      scroll-behavior: smooth;
-      line-height: 1.6;
     }
 
-    /* Header */
     header {
-      background: #22c55e; /* light green */
-      padding: 20px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgb(34 197 94 / 0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    header h1 {
+      background-color: #16a34a;
+      padding: 30px 60px;
+      text-align: center;
       color: white;
-      font-weight: 900;
-      font-size: 28px;
+      font-size: 36px;
+      font-weight: bold;
       letter-spacing: 2px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
-    /* Hero Section */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 60px;
+    .container {
       max-width: 1200px;
-      margin: 0 auto;
-      gap: 50px;
+      margin: auto;
+      padding: 60px;
     }
-    .hero-text {
-      flex: 1;
+
+    .hero {
+      text-align: center;
+      margin-bottom: 80px;
     }
-    .hero-text h2 {
-      font-size: 3rem;
+    .hero h1 {
+      font-size: 48px;
       color: #16a34a;
       margin-bottom: 20px;
     }
-    .hero-text p {
-      font-size: 1.25rem;
-      margin-bottom: 30px;
+    .hero p {
+      font-size: 20px;
       color: #4b5563;
+      margin-bottom: 40px;
+    }
+    .hero img {
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px #ccc;
     }
     .download-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 40px;
       background: #16a34a;
       color: white;
-      padding: 18px 50px;
-      font-weight: 700;
-      font-size: 1.25rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
       text-decoration: none;
-      box-shadow: 0 6px 12px rgb(22 163 74 / 0.4);
-      transition: background-color 0.3s ease;
-      display: inline-block;
+      box-shadow: 0 5px 15px rgba(22, 163, 74, 0.4);
+      transition: 0.3s;
     }
     .download-btn:hover {
       background: #15803d;
-      box-shadow: 0 8px 20px rgb(21 128 61 / 0.6);
-    }
-    .hero-image {
-      flex: 1;
-      max-width: 450px;
-    }
-    .hero-image img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgb(22 163 74 / 0.5);
-      transition: transform 0.4s ease;
-    }
-    .hero-image img:hover {
       transform: scale(1.05);
     }
 
-    /* Features Section */
     .features {
-      max-width: 900px;
-      margin: 60px auto 100px;
-      padding: 0 30px;
+      background: white;
+      padding: 60px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px #ccc;
+      margin-bottom: 60px;
     }
     .features h2 {
       text-align: center;
-      font-size: 2.75rem;
+      font-size: 36px;
       color: #16a34a;
       margin-bottom: 40px;
     }
     .features ul {
-      list-style-type: none;
-      padding-left: 0;
+      font-size: 20px;
+      line-height: 1.8;
+      color: #374151;
+      padding-left: 20px;
     }
     .features ul li {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      padding-left: 40px;
-      position: relative;
-      color: #374151;
-      font-weight: 600;
-    }
-    .features ul li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #16a34a;
-      font-weight: 900;
-      font-size: 1.3rem;
+      margin-bottom: 15px;
     }
 
-    /* Footer */
     footer {
       background: #d1fae5;
-      color: #065f46;
-      padding: 40px 30px;
+      padding: 40px;
       text-align: center;
-      font-size: 1rem;
-      box-shadow: 0 -4px 10px rgb(22 163 74 / 0.3);
+      font-size: 18px;
+      color: #065f46;
     }
     footer a {
-      color: #065f46;
-      margin: 0 15px;
-      font-weight: 700;
+      color: #047857;
+      margin: 0 10px;
       text-decoration: none;
-      transition: color 0.3s ease;
+      font-weight: bold;
     }
     footer a:hover {
       color: #16a34a;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        padding: 50px 30px;
-        gap: 30px;
+    @media (max-width: 768px) {
+      header {
+        font-size: 24px;
+        padding: 20px;
       }
-      .hero-text h2 {
-        font-size: 2.2rem;
+      .container {
+        padding: 20px;
       }
-      .features {
-        margin: 40px auto 80px;
-        padding: 0 20px;
+      .hero h1 {
+        font-size: 32px;
       }
       .features h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-      }
-      .features ul li {
-        font-size: 1.1rem;
+        font-size: 28px;
       }
     }
-
   </style>
 </head>
 <body>
 
-  <header data-aos="fade-down">
-    <h1>ASO KHELI</h1>
+  <header>
+    ASO KHELI
   </header>
 
-  <section class="hero" data-aos="fade-up">
-    <div class="hero-text">
-      <h2>Download Our Official Tournament App</h2>
-      <p>Join exciting Free Fire tournaments, check results, and enjoy 24/7 support through our official app.</p>
-      <a href="app.apk" download class="download-btn">⬇️ Download Now</a>
-    </div>
-    <div class="hero-image">
+  <div class="container">
+
+    <section class="hero" data-aos="fade-up">
+      <h1>Download Our Official Tournament App</h1>
+      <p>Join Free Fire tournaments daily. Real rewards. Fast support. Smooth experience.</p>
       <img src="https://i.ibb.co/wdPpqf7/bermuda.jpg" alt="App Preview" />
-    </div>
-  </section>
+      <br />
+      <a href="app.apk" class="download-btn" download>⬇️ Download App</a>
+    </section>
 
-  <section class="features" data-aos="fade-up">
-    <h2>🔥 Features You'll Love</h2>
-    <ul>
-      <li>Magic Join System – no login required</li>
-      <li>Daily Tournaments with real prizes</li>
-      <li>Instant Match Result Updates</li>
-      <li>24/7 Help & Support Team</li>
-      <li>Smooth Mobile Experience</li>
-    </ul>
-  </section>
+    <section class="features" data-aos="fade-up">
+      <h2>🌟 Features</h2>
+      <ul>
+        <li>✅ No login – Magic Join System</li>
+        <li>✅ Daily Free Fire tournaments</li>
+        <li>✅ Real rewards & instant payout</li>
+        <li>✅ 24/7 help and support</li>
+        <li>✅ Super fast loading, smooth UX</li>
+      </ul>
+    </section>
 
-  <footer data-aos="fade-up">
-    <p>📞 Contact: <a href="tel:+8801309472330">01309472330</a> | 📧 <a href="mailto:ooxx58800@gmail.com">ooxx58800@gmail.com</a></p>
+  </div>
+
+  <footer>
+    <p>📞 <a href="tel:+8801309472330">01309472330</a> | 📧 <a href="mailto:ooxx58800@gmail.com">ooxx58800@gmail.com</a></p>
     <p>
       Follow us:
-      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> |
-      <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a> |
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="#">Facebook</a> |
+      <a href="#">YouTube</a> |
+      <a href="#">Instagram</a>
     </p>
     <p>© 2025 ASO KHELI. All rights reserved.</p>
   </footer>
 
-  <!-- AOS Animation JS -->
+  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
+    AOS.init();
   </script>
-
 </body>
 </html>
