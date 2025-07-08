@@ -1,84 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download Tournament App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASO KHELI - VIP Tournament App</title>
+
+  <!-- AOS CSS CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
   <style>
+    /* --- Basic Reset & Font --- */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #060b12, #1f2937);
+      color: #e0e7ff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Header/Nav --- */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: transparent;
+      padding: 20px 40px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      justify-content: space-between;
+      z-index: 999;
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: none;
+    }
+    header.scrolled {
+      background: #7dd3fc; /* হালকা লাইট গ্রীন (sky blue-ish) */
+      box-shadow: 0 3px 15px rgba(125, 211, 252, 0.6);
+    }
+    header h1 {
+      font-size: 28px;
+      color: #f8fafc;
+      font-weight: 900;
+      transition: color 0.4s ease;
+      margin: 0;
+    }
+    header.scrolled h1 {
+      color: #064e3b; /* ডার্ক গ্রীন শেড */
+      text-shadow: 1px 1px 3px #d1fae5;
     }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .download-btn {
-      background: #facc15;
-      color: black;
-      padding: 15px 35px;
-      font-size: 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
+    /* --- Navigation Links (Optional) --- */
+    nav a {
+      color: #e0e7ff;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .download-btn:hover {
-      background: #eab308;
-    }
-
-    .support {
-      margin-top: 40px;
+      font-weight: 600;
+      margin-left: 25px;
       font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    header.scrolled nav a {
+      color: #064e3b;
+    }
+    nav a:hover {
+      color: #7dd3fc;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 120px 40px 60px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
       color: #f8fafc;
     }
-
-    .support a {
-      color: #facc15;
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .hero-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #22c55e; /* লাইট গ্রীন কালার */
+      text-shadow: 0 0 10px #22c55e;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #d1d5db;
+    }
+    .download-btn {
+      background: #22c55e; /* লাইট গ্রীন বাটন */
+      color: #000;
+      padding: 16px 45px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
       text-decoration: none;
-      font-weight: bold;
+      box-shadow: 0 0 15px #22c55eaa;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .download-btn:hover {
+      background: #16a34a;
+      box-shadow: 0 0 30px #16a34acc;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      max-width: 400px;
+      margin-top: 20px;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #22c55eaa;
+      transition: transform 0.4s ease;
+    }
+    .hero-image img:hover {
+      transform: scale(1.05);
     }
 
-    @media (max-width: 600px) {
-      h1 {
+    /* --- Features Section --- */
+    .features {
+      background: #111827;
+      padding: 60px 40px;
+      text-align: center;
+      color: #f8fafc;
+      box-shadow: inset 0 0 100px #22c55eaa;
+    }
+    .features h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #22c55e;
+      text-shadow: 0 0 12px #22c55e;
+    }
+    .features ul {
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+      list-style-type: none;
+      font-size: 20px;
+    }
+    .features ul li {
+      margin-bottom: 18px;
+      position: relative;
+      padding-left: 40px;
+      color: #fff;
+      font-weight: 600;
+      text-shadow: 0 0 5px #0008;
+    }
+    .features ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 10px;
+      color: #22c55e;
+      font-size: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      text-shadow: 0 0 10px #22c55e;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: #0f172a;
+      padding: 30px 40px;
+      text-align: center;
+      font-size: 16px;
+      color: #94a3b8;
+      box-shadow: inset 0 10px 40px -10px #22c55e33;
+    }
+    footer a {
+      color: #22c55e;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #bbf7d0;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding: 120px 20px 60px;
+      }
+      .hero-text, .hero-image {
+        max-width: 100%;
+        text-align: center;
+      }
+      .hero-text h2 {
         font-size: 28px;
       }
-
-      .download-btn {
+      .features ul {
         font-size: 18px;
-        padding: 12px 28px;
-      }
-
-      .support {
-        font-size: 14px;
+        padding: 0 15px;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>Download Our Tournament App</h1>
+  <header id="header">
+    <h1></h1>
+  </header>
 
-  <a class="download-btn" href="https://drive.google.com/uc?export=download&id=1e19nf_91tutsRD0AcLamPX9W9PWT7Ltb" download>
-    ⬇️ Download App
-  </a>
+  <section class="hero" id="download">
+    <div class="hero-text" data-aos="fade-right" data-aos-once="true">
+      <h2>Download Our Official Tournament App</h2>
+      <p>Join exciting Free Fire tournaments, check results, and enjoy 24/7 support through our official app.</p>
+      <a class="download-btn" href="app.apk" download>⬇️ Download Now</a>
+    </div>
+    <div class="hero-image" data-aos="fade-left" data-aos-once="true">
+      <img src="https://i.ibb.co/wdPpqf7/bermuda.jpg" alt="App Preview" />
+    </div>
+  </section>
 
-  <div class="support">
-    <p>Need help? Call us at <a href="tel:+8801309472330">01309472330</a></p>
-  </div>
+  <section class="features" id="features" data-aos="zoom-in-up" data-aos-once="true">
+    <h2>🔥 Features You'll Love</h2>
+    <ul>
+      <li>Magic Join System – no login required</li>
+      <li>Daily Tournaments with real prizes</li>
+      <li>Instant Match Result Updates</li>
+      <li>24/7 Help & Support Team</li>
+      <li>Smooth Mobile Experience</li>
+    </ul>
+  </section>
 
-</body>
-</html>
+  <footer id="contact" data-aos="fade-up" data-aos-once="true">
+    <p>📞 Contact: <a href="tel:+8801309472330">01309472330</a> | 📧 <a href="mailto:ooxx58800@gmail.com">ooxx58800@gmail.com</a></p>
+    <p>
+      Follow us:
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a> |
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </p>
+    <p>© 2025 ASO KHELI. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS JS CDN -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      offset: 120,
+      duration: 900,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
