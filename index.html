@@ -3,227 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASO KHELI - VIP Tournament App</title>
+  <title>ASO KHELI - Official Tournament App</title>
 
-  <!-- AOS CSS CDN -->
+  <!-- AOS Animation CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
-    /* --- Basic Reset & Font --- */
+    /* Reset & font */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #060b12, #1f2937);
-      color: #e0e7ff;
-      line-height: 1.6;
+      background: #f9fafb;
+      color: #111827;
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
-    /* --- Header/Nav --- */
+    /* Header */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: transparent;
+      background: #22c55e; /* light green */
       padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgb(34 197 94 / 0.3);
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      z-index: 999;
-      transition: background-color 0.4s ease, box-shadow 0.4s ease;
-      box-shadow: none;
-    }
-    header.scrolled {
-      background: #7dd3fc; /* হালকা লাইট গ্রীন (sky blue-ish) */
-      box-shadow: 0 3px 15px rgba(125, 211, 252, 0.6);
     }
     header h1 {
-      font-size: 28px;
-      color: #f8fafc;
+      color: white;
       font-weight: 900;
-      transition: color 0.4s ease;
-      margin: 0;
-    }
-    header.scrolled h1 {
-      color: #064e3b; /* ডার্ক গ্রীন শেড */
-      text-shadow: 1px 1px 3px #d1fae5;
+      font-size: 28px;
+      letter-spacing: 2px;
     }
 
-    /* --- Navigation Links (Optional) --- */
-    nav a {
-      color: #e0e7ff;
-      text-decoration: none;
-      font-weight: 600;
-      margin-left: 25px;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-    header.scrolled nav a {
-      color: #064e3b;
-    }
-    nav a:hover {
-      color: #7dd3fc;
-    }
-
-    /* --- Hero Section --- */
+    /* Hero Section */
     .hero {
-      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
-      padding: 120px 40px 60px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: #f8fafc;
+      justify-content: space-between;
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 50px;
     }
     .hero-text {
       flex: 1;
-      max-width: 600px;
-      padding: 20px;
     }
     .hero-text h2 {
-      font-size: 36px;
+      font-size: 3rem;
+      color: #16a34a;
       margin-bottom: 20px;
-      color: #22c55e; /* লাইট গ্রীন কালার */
-      text-shadow: 0 0 10px #22c55e;
     }
     .hero-text p {
-      font-size: 18px;
+      font-size: 1.25rem;
       margin-bottom: 30px;
-      color: #d1d5db;
+      color: #4b5563;
     }
     .download-btn {
-      background: #22c55e; /* লাইট গ্রীন বাটন */
-      color: #000;
-      padding: 16px 45px;
-      font-size: 20px;
+      background: #16a34a;
+      color: white;
+      padding: 18px 50px;
+      font-weight: 700;
+      font-size: 1.25rem;
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 0 15px #22c55eaa;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 12px rgb(22 163 74 / 0.4);
+      transition: background-color 0.3s ease;
+      display: inline-block;
     }
     .download-btn:hover {
-      background: #16a34a;
-      box-shadow: 0 0 30px #16a34acc;
+      background: #15803d;
+      box-shadow: 0 8px 20px rgb(21 128 61 / 0.6);
     }
     .hero-image {
       flex: 1;
-      text-align: center;
-      max-width: 400px;
-      margin-top: 20px;
+      max-width: 450px;
     }
     .hero-image img {
       width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #22c55eaa;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgb(22 163 74 / 0.5);
       transition: transform 0.4s ease;
     }
     .hero-image img:hover {
       transform: scale(1.05);
     }
 
-    /* --- Features Section --- */
+    /* Features Section */
     .features {
-      background: #111827;
-      padding: 60px 40px;
-      text-align: center;
-      color: #f8fafc;
-      box-shadow: inset 0 0 100px #22c55eaa;
+      max-width: 900px;
+      margin: 60px auto 100px;
+      padding: 0 30px;
     }
     .features h2 {
-      font-size: 32px;
-      margin-bottom: 30px;
-      color: #22c55e;
-      text-shadow: 0 0 12px #22c55e;
+      text-align: center;
+      font-size: 2.75rem;
+      color: #16a34a;
+      margin-bottom: 40px;
     }
     .features ul {
-      max-width: 700px;
-      margin: auto;
-      text-align: left;
       list-style-type: none;
-      font-size: 20px;
+      padding-left: 0;
     }
     .features ul li {
-      margin-bottom: 18px;
-      position: relative;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
       padding-left: 40px;
-      color: #fff;
+      position: relative;
+      color: #374151;
       font-weight: 600;
-      text-shadow: 0 0 5px #0008;
     }
     .features ul li::before {
       content: "✔";
       position: absolute;
-      left: 10px;
-      color: #22c55e;
-      font-size: 22px;
+      left: 0;
       top: 50%;
       transform: translateY(-50%);
-      text-shadow: 0 0 10px #22c55e;
+      color: #16a34a;
+      font-weight: 900;
+      font-size: 1.3rem;
     }
 
-    /* --- Footer --- */
+    /* Footer */
     footer {
-      background: #0f172a;
-      padding: 30px 40px;
+      background: #d1fae5;
+      color: #065f46;
+      padding: 40px 30px;
       text-align: center;
-      font-size: 16px;
-      color: #94a3b8;
-      box-shadow: inset 0 10px 40px -10px #22c55e33;
+      font-size: 1rem;
+      box-shadow: 0 -4px 10px rgb(22 163 74 / 0.3);
     }
     footer a {
-      color: #22c55e;
+      color: #065f46;
       margin: 0 15px;
-      text-decoration: none;
       font-weight: 700;
+      text-decoration: none;
       transition: color 0.3s ease;
     }
     footer a:hover {
-      color: #bbf7d0;
+      color: #16a34a;
     }
 
-    /* --- Responsive --- */
+    /* Responsive */
     @media (max-width: 900px) {
       .hero {
         flex-direction: column;
-        padding: 120px 20px 60px;
-      }
-      .hero-text, .hero-image {
-        max-width: 100%;
-        text-align: center;
+        padding: 50px 30px;
+        gap: 30px;
       }
       .hero-text h2 {
-        font-size: 28px;
+        font-size: 2.2rem;
       }
-      .features ul {
-        font-size: 18px;
-        padding: 0 15px;
+      .features {
+        margin: 40px auto 80px;
+        padding: 0 20px;
+      }
+      .features h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+      .features ul li {
+        font-size: 1.1rem;
       }
     }
+
   </style>
 </head>
 <body>
 
-  <header id="header">
-    <h1></h1>
+  <header data-aos="fade-down">
+    <h1>ASO KHELI</h1>
   </header>
 
-  <section class="hero" id="download">
-    <div class="hero-text" data-aos="fade-right" data-aos-once="true">
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-text">
       <h2>Download Our Official Tournament App</h2>
       <p>Join exciting Free Fire tournaments, check results, and enjoy 24/7 support through our official app.</p>
-      <a class="download-btn" href="app.apk" download>⬇️ Download Now</a>
+      <a href="app.apk" download class="download-btn">⬇️ Download Now</a>
     </div>
-    <div class="hero-image" data-aos="fade-left" data-aos-once="true">
+    <div class="hero-image">
       <img src="https://i.ibb.co/wdPpqf7/bermuda.jpg" alt="App Preview" />
     </div>
   </section>
 
-  <section class="features" id="features" data-aos="zoom-in-up" data-aos-once="true">
+  <section class="features" data-aos="fade-up">
     <h2>🔥 Features You'll Love</h2>
     <ul>
       <li>Magic Join System – no login required</li>
@@ -234,7 +203,7 @@
     </ul>
   </section>
 
-  <footer id="contact" data-aos="fade-up" data-aos-once="true">
+  <footer data-aos="fade-up">
     <p>📞 Contact: <a href="tel:+8801309472330">01309472330</a> | 📧 <a href="mailto:ooxx58800@gmail.com">ooxx58800@gmail.com</a></p>
     <p>
       Follow us:
@@ -245,14 +214,15 @@
     <p>© 2025 ASO KHELI. All rights reserved.</p>
   </footer>
 
-  <!-- AOS JS CDN -->
+  <!-- AOS Animation JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
   <script>
     AOS.init({
-      offset: 120,
-      duration: 900,
+      duration: 800,
       easing: 'ease-in-out',
-      once: true,
-      mirror: false
+      once: true
     });
+  </script>
+
+</body>
+</html>
